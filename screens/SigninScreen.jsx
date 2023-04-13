@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Text, View, Button, TextInput } from 'react-native'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification  } from 'firebase/auth'
 import { auth, db } from '../firebase';
 import { addDoc, collection } from 'firebase/firestore'
 
@@ -21,6 +21,7 @@ export default function SigninScreen() {
                 authProvider: "local",
                 email,
             });
+            await sendEmailVerification(auth.currentUser).then(console.log(auth.currentUser))
         } catch (err) {
             console.error(err);
             alert(err.message);

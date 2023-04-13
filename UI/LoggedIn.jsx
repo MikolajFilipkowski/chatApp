@@ -8,6 +8,7 @@ import SettingsScreen from '../screens/SettingsScreen.jsx';
 const Tab = createBottomTabNavigator();
 
 export default function LoggedIn() {
+
     return (
         <NavigationContainer>
             <Tab.Navigator>
