@@ -7,15 +7,10 @@ export default function LoginScreen() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    function authenticate() {
-        
-    }
-
     async function sendFormHandler(e) {
-        console.log(email)
 
         try {
-            await signInWithEmailAndPassword(auth, email, password).then(authenticate());
+            await signInWithEmailAndPassword(auth, email, password).then(console.log(auth));
         } catch (err) {
             console.error(err);
             alert(err.message);

@@ -7,15 +7,14 @@ import SigninScreen from '../screens/SigninScreen';
 import StartScreen from '../screens/StartScreen';
 import { LogBox } from 'react-native';
 
-export default function LoginPanel({loginStatus, setLoginStatus}) {
+export default function LoginPanel() {
 
     const Stack = createNativeStackNavigator();
-
 
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Welcome" component={StartScreen} initialParams={{loginStatus, setLoginStatus}} />
+                <Stack.Screen name="Welcome" component={StartScreen}/>
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Signin" component={SigninScreen} />
             </Stack.Navigator>

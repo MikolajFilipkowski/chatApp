@@ -1,8 +1,7 @@
 import { Button } from 'react-native'
 import { Text, View } from 'react-native'
 
-export default function StartScreen(props) {
-    console.log(props.route)
+export default function StartScreen({navigation}) {
 
     return (
         <View>
