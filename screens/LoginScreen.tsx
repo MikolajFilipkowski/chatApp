@@ -1,3 +1,4 @@
+import React from 'react'
 import { Text, View, TextInput, Button } from 'react-native'
 import { useState } from 'react'
 import {signInWithEmailAndPassword} from 'firebase/auth'
@@ -7,13 +8,12 @@ export default function LoginScreen() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    async function sendFormHandler(e) {
+    async function sendFormHandler(e:any) {
 
         try {
-            await signInWithEmailAndPassword(auth, email, password).then(console.log(auth));
+            await signInWithEmailAndPassword(auth, email, password);
         } catch (err) {
             console.error(err);
-            alert(err.message);
         }
 
         setEmail("")
@@ -23,9 +23,9 @@ export default function LoginScreen() {
     return (
         <View>
             <Text>Email</Text>
-            <TextInput onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <TextInput onChangeText={(text) => setEmail(text)} value={email}/>
             <Text>Password</Text>
-            <TextInput onChange={(e) => setPassword(e.target.value)} value={password} secureTextEntry={true}/>
+            <TextInput onChangeText={(text) => setPassword(text)} value={password} secureTextEntry={true}/>
             <Button onPress={sendFormHandler} title="Log In"/>
         </View>
     )

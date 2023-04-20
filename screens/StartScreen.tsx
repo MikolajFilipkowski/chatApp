@@ -1,7 +1,8 @@
+import React, { FC } from 'react'
 import { Button } from 'react-native'
 import { Text, View } from 'react-native'
 
-export default function StartScreen({navigation}) {
+const StartScreen:FC<any> = ({navigation}) => {
 
     return (
         <View>
@@ -20,3 +21,5 @@ export default function StartScreen({navigation}) {
         </View>
     )
 }
+
+export default StartScreen

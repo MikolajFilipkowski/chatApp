@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import { Text, View, Button, TextInput } from 'react-native'
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
@@ -9,7 +10,7 @@ export default function SigninScreen() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    async function sendFormHandler(e) {
+    async function sendFormHandler(e:any) {
         console.log(username)
         console.log(email)
 
@@ -21,13 +22,15 @@ export default function SigninScreen() {
                 authProvider: "local",
                 email,
             });
-            await sendEmailVerification(auth.currentUser).then(console.log(auth.currentUser))
-            await updateProfile(auth.currentUser, { displayName: username }).catch(
-                (err) => console.error(err)
-            );
+            if (auth.currentUser) {
+                await sendEmailVerification(auth.currentUser)
+                await updateProfile(auth.currentUser, { displayName: username }).catch(
+                    (err) => console.error(err)
+                );
+            }
+            
         } catch (err) {
             console.error(err);
-            alert(err.message);
         }
 
         setUsername("")
@@ -38,11 +41,11 @@ export default function SigninScreen() {
     return (
         <View>
             <Text>Username</Text>
-            <TextInput onChange={(e) => setUsername(e.target.value)} value={username}/>
+            <TextInput onChangeText={(text) => setUsername(text)} value={username}/>
             <Text>Email</Text>
-            <TextInput onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <TextInput onChangeText={(text) => setEmail(text)} value={email}/>
             <Text>Password</Text>
-            <TextInput onChange={(e) => setPassword(e.target.value)} value={password} secureTextEntry={true}/>
+            <TextInput onChangeText={(text) => setPassword(text)} value={password} secureTextEntry={true}/>
             <Button onPress={sendFormHandler} title="Sign In"/>
         </View>
     )
