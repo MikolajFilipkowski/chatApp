@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { Component, FC } from 'react';
 import { Button } from 'react-native'
 import { Text, View } from 'react-native'
 

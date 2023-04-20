@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { auth } from '../firebase.js'
-import ChatScreen from '../screens/ChatScreen.jsx';
-import ProfileScreen from '../screens/ProfileScreen.jsx';
-import SettingsScreen from '../screens/SettingsScreen.jsx';
+import ChatScreen from '../screens/ChatScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 
