@@ -1,8 +1,9 @@
 import React, { Component, useState } from 'react';
-import { Text, View, Button, TextInput } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
 import { auth, db } from '../firebase';
 import { addDoc, collection } from 'firebase/firestore'
+import { styles } from './styles'
 
 export default function SigninScreen() {
     const [username, setUsername] = useState("")
@@ -39,13 +40,27 @@ export default function SigninScreen() {
 
     return (
         <View>
-            <Text>Username</Text>
-            <TextInput onChangeText={(text) => setUsername(text)} value={username}/>
-            <Text>Email</Text>
-            <TextInput onChangeText={(text) => setEmail(text)} value={email}/>
-            <Text>Password</Text>
-            <TextInput onChangeText={(text) => setPassword(text)} value={password} secureTextEntry={true}/>
-            <Button onPress={sendFormHandler} title="Sign In"/>
+            <View style={styles.textInput}>
+                <Text style={styles.textInputLabel}>Username</Text>
+                <View style={styles.textInputView}>
+                    <TextInput style={styles.textInputContent} onChangeText={(text) => setUsername(text)} value={username}/>
+                </View>
+            </View>
+            <View style={styles.textInput}>
+                <Text style={styles.textInputLabel}>Email</Text>
+                <View style={styles.textInputView}>
+                    <TextInput style={styles.textInputContent} onChangeText={(text) => setEmail(text)} value={email}/>
+                </View>
+            </View>
+            <View style={styles.textInput}>
+                <Text style={styles.textInputLabel}>Password</Text>
+                <View style={styles.textInputView}>
+                    <TextInput style={styles.textInputContent} onChangeText={(text) => setPassword(text)} value={password} secureTextEntry={true}/>
+                </View>
+            </View>
+            <TouchableOpacity style={styles.formButton} onPress={sendFormHandler}>
+                <Text style={styles.formButtonTitle}>Sign In</Text>
+            </TouchableOpacity>
         </View>
     )
 }
